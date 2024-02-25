@@ -37,7 +37,7 @@ import providers_api
 import schedule_api
 #socket = SocketIO(app, cors_allowed_origins="*")
 
-database = psycopg2.connect("dbname=postgres user=postgres password=or7light host=localhost")
+database = psycopg2.connect(f"dbname={database.database} user={database.user} password={database.password} host={database.host}")
 
 def updateUsers(user_id: int, socket_id: str):
     for user in users:
