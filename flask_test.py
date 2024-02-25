@@ -14,10 +14,11 @@ app.host = 'localhost'
 app.config['SECRET_KEY'] = 'mysecret'
 cors = CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"]}})
 
-credentials = boto3.client(
+credentials_raw = boto3.client(
     service_name='secretsmanager',
     region_name='us-east-2'
 ).get_secret_value(SecretId='rds-db-credentials/cluster-QWGHP2U3X2JAX5OS3G3GAG2G2Q/mcs/1708810086121')
+credentials = json.loads(credentials_raw)
 
 class RDSDatabase:
     def __init__(self, user, password, database, host):
@@ -27,10 +28,10 @@ class RDSDatabase:
         self.host = host
 
 database = RDSDatabase(
-    credentials['SecretString'].username, 
-    credentials['SecretString'].password, 
+    credentials.SecretString.password, 
+    credentials.SecretString.username, 
     "postgres", 
-    credentials['SecretString'].host
+    credentials.SecretString.host
 )
 
 import providers_api
