@@ -1,7 +1,7 @@
 import json
 from flask import Flask, jsonify, request
 
-app = Flask(__name__)
+from __main__ import app
 
 schedule = [{'day': 'Monday', 'task': 'Take meds', 'date': '00/00/00', 'time': '8 am'}]
 

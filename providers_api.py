@@ -1,7 +1,7 @@
 import json
 from flask import Flask, jsonify, request
 
-app = Flask(__name__)
+from __main__ import app
 
 providers = [{'specialty': 'Physician', 
               'name': 'Dr. ABC', 
@@ -98,6 +98,3 @@ def delete_provider(name):
     
     providers = [e for e in providers if e['name'] != name]
     return jsonify(doc), 200
-
-if __name__ == '__main__':
-    app.run(port=5000)

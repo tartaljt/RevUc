@@ -13,6 +13,8 @@ app.host = 'localhost'
 app.config['SECRET_KEY'] = 'mysecret'
 cors = CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"]}})
 
+import providers_api
+import schedule_api
 #socket = SocketIO(app, cors_allowed_origins="*")
 
 database = psycopg2.connect("dbname=postgres user=postgres password=or7light host=localhost")
