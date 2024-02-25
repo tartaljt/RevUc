@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_file, session
 from flask_socketio import SocketIO, send, join_room, leave_room
 from flask_cors import CORS, cross_origin
 import json
-import psycopg2-binary
+import psycopg2
 import datetime
 import boto3
 
