@@ -14,8 +14,7 @@ app.host = 'localhost'
 app.config['SECRET_KEY'] = 'mysecret'
 cors = CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"]}})
 
-secrets_client = boto3.session.Session()
-credentials = secrets_client.client(
+credentials = boto3.client(
     service_name='secretsmanager',
     region_name='us-east-2'
 ).get_secret_value(SecretId='rds-db-credentials/cluster-QWGHP2U3X2JAX5OS3G3GAG2G2Q/mcs/1708810086121')
