@@ -41,8 +41,10 @@ def updateUsers(user_id: int, socket_id: str):
 
 
 def sendJournalToDatabase(user_id, journal_data):
+    if journal_data == "" or journal_data == None:
+        return None
     database_cursor = database.cursor()
-    database_cursor.execute(f"INSERT INTO rev_journals (userid, entry, timesent, datesent) VALUES ({user_id}, '{journal_data}', '{datetime.datetime.now().time()}', '{datetime.date.today()}');")
+    database_cursor.execute(f"INSERT INTO rev_journals (userid, entry, timesent, datesent) VALUES (%s, %s, %s, %s);", (user_id, journal_data, datetime.datetime.now().time(), datetime.date.today()))
     database.commit()
     database_cursor.close()
     return None
