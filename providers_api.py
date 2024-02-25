@@ -1,25 +1,21 @@
 import json
 from flask import Flask, jsonify, request
 
-from __main__ import app
 
 providers = [{'specialty': 'Physician', 
               'name': 'Dr. ABC', 
               'email': 'email@mail.com', 
               'phone': '123-123-1234'}]
 
-@app.route('/providers', methods=['GET'])
 def get_provider():
     return jsonify(providers)
 
-@app.route('/providers', methods=['GET'])
 def get_provider_by_type(type):
     doc = get_provider(type)
     if doc is None:
         return jsonify({'error': 'Provider does not exist'}), 404
     return jsonify(doc)
 
-@app.route('/providers', methods=['GET'])
 def get_provider_by_name(name):
     doc = get_provider(name)
     if doc is None:
@@ -52,7 +48,6 @@ def phone_is_valid(doc):
             return False
         return True
     
-@app.route('/providers', methods=['POST'])
 def create_provider():
 
     doc = json.loads(request.data)
@@ -69,7 +64,6 @@ def create_provider():
 
     return '', 201, {'location': f'/providers/{doc["name"]}'}
 
-@app.route('/providers', methods=['PUT'])
 def update_provider(name):
     doc = get_provider_by_name(name)
     if doc is None:
@@ -89,7 +83,6 @@ def update_provider(name):
 
     return jsonify(doc)
 
-@app.route('/providers', methods=['DELETE'])
 def delete_provider(name):
     global providers
     doc = get_provider_by_name(name)

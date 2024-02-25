@@ -1,7 +1,6 @@
 import json
 from flask import Flask, jsonify, request
 
-from __main__ import app
 
 schedule = [
     {'day': 'Monday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
@@ -14,11 +13,9 @@ schedule = [
     {'day': 'Friday', 'task': 'Write in journal', 'date': '02/24/2024', 'time': '4pm'}
     ]
 
-@app.route('/schedule', methods=['GET'])
 def get_schedule():
     return jsonify(schedule)
 
-@app.route('/schedule', methods=['GET'])
 def get_schedule_by_date(date):
     task = get_task(date)
     if task is None:
@@ -39,7 +36,6 @@ def date_is_valid(date):
     return True
 
 
-@app.route('/schedule', methods=['POST'])
 def create_task():
 
     task = json.loads(request.data)
@@ -54,7 +50,6 @@ def create_task():
 
     return '', 201, {'location': f'/schedule/{task}'}
 
-@app.route('/schedule', methods=['PUT'])
 def update_task(task):
     up_task = get_task(task)
     if up_task is None:
@@ -64,7 +59,6 @@ def update_task(task):
     up_task.update(updated_schedule)
     return jsonify(up_task)
     
-@app.route('/employees', methods=['DELETE'])
 def delete_task(task):
     global schedule
     cur_task = get_task(task)
