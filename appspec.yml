@@ -3,3 +3,8 @@ os: linux
 files:
   - source: /
     destination: /opt/mcs
+hooks:
+  AfterInstall:
+    - location: /opt/mcs/AfterInstall.sh
+      timeout: 300
+      runas: root
