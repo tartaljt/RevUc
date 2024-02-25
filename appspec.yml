@@ -4,7 +4,7 @@ files:
   - source: /
     destination: /opt/mcs
 hooks:
-  BeforeAllowTraffic:
+  AfterInstall:
     - location: /install_packages.sh
       timeout: 300
       runas: ec2-user
