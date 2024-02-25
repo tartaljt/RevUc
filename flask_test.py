@@ -26,7 +26,7 @@ class RDSDatabase:
         self.database = database
         self.host = host
 
-database = RDSDatabase(
+database_info = RDSDatabase(
     credentials['username'], 
     credentials['password'], 
     "postgres", 
@@ -37,7 +37,7 @@ import providers_api
 import schedule_api
 #socket = SocketIO(app, cors_allowed_origins="*")
 
-database = psycopg2.connect(f"dbname={database.database} user={database.user} password={database.password} host={database.host}")
+database = psycopg2.connect(f"dbname={database_info.database} user={database_info.user} password={database_info.password} host={database_info.host}")
 
 def updateUsers(user_id: int, socket_id: str):
     for user in users:
