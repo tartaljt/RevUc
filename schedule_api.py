@@ -3,7 +3,16 @@ from flask import Flask, jsonify, request
 
 from __main__ import app
 
-schedule = [{'day': 'Monday', 'task': 'Take meds', 'date': '00/00/00', 'time': '8 am'}]
+schedule = [
+    {'day': 'Monday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
+    {'day': 'Monday', 'task': 'Write in journal', 'date': '02/24/2024', 'time': '4pm'},
+    {'day': 'Tuesday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
+    {'day': 'Wednesday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
+    {'day': 'Wednesday', 'task': 'Write in journal', 'date': '02/24/2024', 'time': '4pm'},
+    {'day': 'Thursday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
+    {'day': 'Friday', 'task': 'Take meds', 'date': '02/24/2024', 'time': '8am'},
+    {'day': 'Friday', 'task': 'Write in journal', 'date': '02/24/2024', 'time': '4pm'}
+    ]
 
 @app.route('/schedule', methods=['GET'])
 def get_schedule():
@@ -64,10 +73,3 @@ def delete_task(task):
     
     schedule = [e for e in schedule if e['task']!=task]
     return jsonify(cur_task), 200
-
-
-if __name__ == '__main__':
-    app.run(port=5000)
-
-
-
