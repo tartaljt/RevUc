@@ -8,7 +8,8 @@ let endpoint = "http://localhost:5000";
 export default function Chat() {
     //const [messages, setMessages] = useState([]);
     //const [message, setMessage] = useState("");
-    const [userID, setUserID] = useState(-1);
+    const [userID, setUserID] = useState();
+    const [journal, setJournal] = useState();
     //const [toUserId, setToUserID] = useState(-1);
     //useEffect(() => {
     //    getMessages();
@@ -44,8 +45,16 @@ export default function Chat() {
 
 
     const sendJournal = () => {
+        if(userID === undefined)
+        {
+            alert("Please enter your user ID first!")
+        }
+        if(document.getElementById("freeform").value = "" || document.getElementById("freeform").value === null)
+        {
+            alert("Please enter a journal entry first!")
+        }
         console.log(document.getElementById("freeform").value)
-        fetch(endpoint + '/journal', {  // Enter your IP address here
+        fetch(endpoint + '/journal', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -55,19 +64,21 @@ export default function Chat() {
         contentType: 'application/json',
         body: JSON.stringify({'userID': userID, 'journal': document.getElementById("freeform").value})
         })
+        document.getElementById("freeform").value = ""
     };
 
   return (
     <div id="journal">
+        <h1>Journal</h1>
+        <p>Here you can write your journal entries</p>
         <Form>
-            <p>Enter your user ID</p>
             <input type="integer" placeholder="Enter a userID" value={userID} name = "id" onChange={e => onUserIDChange(e)} />
         </Form>
-        <p>Journal</p>
-        <textarea id="freeform" name="freeform" rows="6" cols="50">
+        <p>Write your entry here:</p>
+        <textarea id="freeform" name="freeform" rows="6" cols="50" placeholder="Write your entry">
     </textarea>
     <Form>
-        <button type="submit" onClick={sendJournal}>Send</button>
+        <button type="submit" onClick={sendJournal}>Submit</button>
     </Form>
     </div>
   );

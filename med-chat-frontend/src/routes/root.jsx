@@ -11,7 +11,7 @@ export default function Root() {
                 <a href={`/journal`}>Write in Journal</a>
               </li>
               <li>
-                <a href={`/call`}>Video Call</a>
+                <a href={`/providers`}>Providers</a>
               </li>
               <li>
                 <a href={`/schedule`}>Schedule</a>

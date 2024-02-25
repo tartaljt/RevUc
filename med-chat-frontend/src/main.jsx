@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import Root from "./routes/root";
 import Journal from "./routes/journal";
-import Call from "./routes/call";
+import Providers from "./routes/providers";
 import Schedule from "./routes/schedule";
 import ErrorPage from "./error-page";
 import {
@@ -22,17 +22,13 @@ const router = createBrowserRouter([
           element: <Journal />,
         },
         {
-          path: "call/",
-          element: <Call />,
+          path: "providers/",
+          element: <Providers />,
         },
         {
           path: "schedule/",
           element: <Schedule />,
         },
-        //{
-        //  path: "monitor/",
-        //  element: <Monitor />,
-        //},
       ],
   },
 ]);

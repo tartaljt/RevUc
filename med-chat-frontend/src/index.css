@@ -348,3 +348,9 @@ html {
     width: 100%;
   }
   
+  textbox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
