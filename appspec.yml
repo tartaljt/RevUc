@@ -5,8 +5,15 @@ files:
     destination: /opt/mcs
 hooks:
   ApplicationStop:
-    - location:
-  AfterInstall:
-    - location: /install_packages.sh
+    - location: /actions/stop_service
       timeout: 300
       runas: root
+  AfterInstall:
+    - location: /actions/install_packages
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: /actions/start_service
+      timeout: 300
+      runas: root
+file_exists_behavior: OVERWRITE
