@@ -5,6 +5,6 @@ files:
     destination: /opt/mcs
 hooks:
   AfterInstall:
-    - location: /opt/mcs/AfterInstall.sh
+    - location: /AfterInstall.sh
       timeout: 300
       runas: root
