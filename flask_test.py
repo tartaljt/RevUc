@@ -27,10 +27,10 @@ class RDSDatabase:
         self.host = host
 
 database = RDSDatabase(
-    credentials.password, 
-    credentials.username, 
+    credentials['username'], 
+    credentials['password'], 
     "postgres", 
-    credentials.host
+    credentials['host']
 )
 
 import providers_api
