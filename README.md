@@ -1,0 +1,2 @@
+- CD into `med-chat-frontend`
+- Then run `npm run dev`
