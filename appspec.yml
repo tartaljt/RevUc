@@ -13,7 +13,7 @@ hooks:
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: /actions/start_packages
+    - location: /actions/start_service
       timeout: 300
       runas: root
 file_exists_behavior: OVERWRITE
