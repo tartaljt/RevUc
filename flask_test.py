@@ -26,7 +26,12 @@ class RDSDatabase:
         self.database = database
         self.host = host
 
-database = RDSDatabase(credentials['username'], credentials['password'], "postgres", credentials['host'])
+database = RDSDatabase(
+    credentials.SecretString['username'], 
+    credentials.SecretString['password'], 
+    "postgres", 
+    credentials.SecretString['host']
+)
 
 import providers_api
 import schedule_api
