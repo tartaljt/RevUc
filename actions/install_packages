@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /opt/mcs/med-chat-frontend
+npm install
